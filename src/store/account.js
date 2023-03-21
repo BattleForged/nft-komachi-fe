@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import { useWeb3 } from '@/store/web3'
-import { useContract } from '@/store/contract'
 
 const web3 = useWeb3();
 
@@ -26,6 +25,7 @@ export const useAccount = defineStore('account', {
         console.error(error);
       }
       await web3.checkNetwork();
+      const { useContract } = require('@/store/contract')
       const contract = useContract();
       await [contract.getContract(), contract.getWhitelistInfo(this.selectedAccount)];
     },
@@ -49,6 +49,7 @@ export const useAccount = defineStore('account', {
         console.error(error);
       }
       await web3.checkNetwork();
+      const { useContract } = require('@/store/contract')
       const contract = useContract();
       await [contract.getContract(), contract.getWhitelistInfo(this.selectedAccount)];
     }
