@@ -21,10 +21,17 @@
 
 <script setup>
 import { useAccount } from '@/store/account'
+import { useContract } from '@/store/contract'
 import { storeToRefs } from "pinia";
+import { watch } from 'vue';
 const accountStore = useAccount();
 const { accounts, selectedAccount } = storeToRefs(accountStore);
 const { connect, reconnect, test } = accountStore;
+
+const contractStore = useContract();
+const { getContract, getWhitelistInfo } = contractStore;
+
+watch(selectedAccount, (newValue) => [getContract(), getWhitelistInfo(newValue)])
 </script>
 <style scoped>
 .btn-wapper {

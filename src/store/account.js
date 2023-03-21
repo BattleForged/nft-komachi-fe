@@ -25,9 +25,6 @@ export const useAccount = defineStore('account', {
         console.error(error);
       }
       await web3.checkNetwork();
-      const { useContract } = require('@/store/contract')
-      const contract = useContract();
-      await [contract.getContract(), contract.getWhitelistInfo(this.selectedAccount)];
     },
     async reconnect() {
       await web3.getWeb3()
@@ -49,9 +46,6 @@ export const useAccount = defineStore('account', {
         console.error(error);
       }
       await web3.checkNetwork();
-      const { useContract } = require('@/store/contract')
-      const contract = useContract();
-      await [contract.getContract(), contract.getWhitelistInfo(this.selectedAccount)];
     }
   }
 })
